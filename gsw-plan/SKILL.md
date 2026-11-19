@@ -5,9 +5,11 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 
 # gsw-plan
 
-生命周期：— → `Idea` → `Draft`（`Done` 由 gsw-ship 标记）。
+生命周期：— → `Idea` → `Draft` → `Locked`（`Locked` 由 gsw-approve 标记，`Done` 由 gsw-ship 标记）。
 
-一个计划文件两个阶段：先**记录**（`Idea`），再**成稿**（`Draft`）。这个人只要记录就到
+一个计划文件三个阶段：先**记录**（`Idea`），再**成稿**（`Draft`），批准后由 gsw-approve
+**锁定**（`Locked`）。方案先行：`Locked` 之前不改任何代码与产物，只做方案、方案写在
+plans 里；实现必须等 gsw-implement 在 `Locked` 计划上做。这个人只要记录就到
 第 5 步停下；想继续设计就接着做完。两次可以在同一个会话里，也可以隔天补成稿。
 
 ## 步骤
@@ -25,7 +27,7 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
    ---
    title: <标题>
    summary: <一行摘要>
-   status: Idea          # Idea / Draft / Done
+   status: Idea          # Idea / Draft / Locked / Done
    class:                # S / M / L（成稿时填）
    language: <en|zh>
    packages: []
@@ -64,7 +66,13 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
    `class`、`packages`、`requirements`、`tracker`，`status` 置 `Draft`。
 9. 更新 `doc/plans/INDEX.md`，提交并推送（提交只含 `doc/plans/`，信息形如
    `plan(<slug>): draft`）。
-10. 回复：class、文件路径，下一步（用 gsw-implement 实现）。
+10. 回复：class、文件路径，下一步（用 gsw-approve 评审锁定）。
+
+## 计划附件
+
+- 计划的扩充材料与附件（接口表、DBC 产物、评审记录、数据等）放同名附件夹
+  `doc/plans/records/<计划文件名去 .md>_plan/`，正文用相对路径引用。
+- 附件夹随计划走同样的提交规矩：单独提交，只含 `doc/plans/`。
 
 ## 不要
 

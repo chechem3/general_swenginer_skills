@@ -1,18 +1,20 @@
 ---
 name: gsw-implement
-description: "USE WHEN a person wants an agent to implement a Draft plan or a class S small item. Triggers: 'implement', 'start coding', 'do it', '实现', '开发', '开干', '动手'. Checks that the plan has a finished design (status Draft), creates the feature branch from the default branch, and works test-first inside the plan's Decision. Never changes doc/plans/."
+description: "USE WHEN a person wants an agent to implement an approved plan or a class S small item. Triggers: 'implement', 'start coding', 'do it', '实现', '开发', '开干', '动手'. This is the ONLY path to change code or artifacts: requires the plan locked (status Locked, set by gsw-approve), creates the feature branch from the default branch, and works test-first inside the plan's Decision. Never changes doc/plans/."
 ---
 
 # gsw-implement
 
-生命周期：工作于 `Draft` 计划（计划状态不变，`Done` 由 gsw-ship 标记）。
+生命周期：工作于 `Locked` 计划（计划状态不变，`Done` 由 gsw-ship 标记）。
+方案先行的实现闸门：只实现已被 gsw-approve 锁定的计划，没有例外。
 
 ## 步骤
 
-1. 找到工作：这个人给的 slug，或列出 `status: Draft` 的计划让他选；
+1. 找到工作：这个人给的 slug，或列出 `status: Locked` 的计划让他选；
    class S 小项：一个跟踪项 ID + 一句话目标，无计划文件。
-2. 读计划（`doc/plans/records/<file>`，本地落后先 pull）。状态必须是 `Draft`；
-   还是 `Idea`（设计没写完）就停下："先用 gsw-plan 把 Decision、验收检查和步骤写好"。
+2. 读计划（`doc/plans/records/<file>`，本地落后先 pull）。状态必须是 `Locked`；
+   `Draft`（方案没锁定）就停下："先用 gsw-approve 评审锁定，批准前只做方案"；
+   `Idea`（设计没写完）就停下："先用 gsw-plan 把 Decision、验收检查和步骤写好"。
    class S 跳过这一步。
 3. 从最新的默认分支切工作分支：
    `git switch -c <type>/<tracker>-<slug-words-with-dash>`（tracker 无则 `pending`；
