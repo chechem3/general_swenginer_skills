@@ -14,8 +14,11 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 
 1. 从这个人的话里取想法；如果给了聊天/文档链接且本机有对应 CLI，读取其内容再用。
    任何语言都可以。
-2. 提议一个简短 slug（小写字母、数字、`_`）、标题和计划语言（默认取这个人的消息语言；
-   不确定用 `en`）。只在它们不明确时用一个问题确认。
+2. 提议一个简短 slug（小写字母、数字、`_`）、标题和计划语言。计划语言跟随这个人当前
+   消息的语言：中文表达就整份文档用中文（`title`、`summary`、Why、Decision、验收检查、
+   Steps 全部中文，不做英文兜底），英文表达就全用英文；仅当这个人明确点名语言时才用
+   点名的语言。章节锚点（`## Why` 等）和 slug 格式保持固定，不随语言变。
+   只在它们不明确时用一个问题确认。
 3. 创建 `doc/plans/records/YYYYMMDD_<slug>.md`（目录不存在就先建），内容为模板：
 
    ````markdown
@@ -56,7 +59,8 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 7. 只问缺的东西，一次一问，并附你的建议答案：选定的选项及理由；后果；受影响的
    `packages`；验收检查（写成可运行的命令或可判定的判据，含一个预期 `FAIL` 用例）。
 8. 写 `## Decision`、`## Acceptance checks`（表：ID、检查、期望结果）和简短的
-   `## Steps`，用计划的 `language`。保留 `## Why` 里这个人的原文。front matter 填
+   `## Steps`，用计划的 `language` 写全部内容（含 `title`/`summary`，不中英混排）。
+   保留 `## Why` 里这个人的原文。front matter 填
    `class`、`packages`、`requirements`、`tracker`，`status` 置 `Draft`。
 9. 更新 `doc/plans/INDEX.md`，提交并推送（提交只含 `doc/plans/`，信息形如
    `plan(<slug>): draft`）。

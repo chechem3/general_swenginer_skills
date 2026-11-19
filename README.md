@@ -31,7 +31,7 @@ front matter 字段与章节（模板见 gsw-plan）：
 | 字段 | 说明 |
 |---|---|
 | title / summary | 标题；一行摘要 |
-| language | 计划正文语言（`en`/`zh`，缺省按提出者的消息语言）|
+| language | 计划正文语言（`en`/`zh`，跟随提出者的消息语言，不做英文兜底）|
 | status | Idea / Draft / Done |
 | class | S（单模块小改，无需计划）/ M（单模块新功能）/ L（跨模块、契约、阈值、外部行为变更）|
 | packages | 受影响模块/目录 |
