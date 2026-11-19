@@ -1,6 +1,6 @@
 ---
 name: gsw-implement
-description: "USE WHEN a person wants an agent to implement a Draft plan or a class S small item. Triggers: 'implement', 'start coding', 'do it', '实现', '开发', '开干', '动手'. Checks that the plan has a finished design (status Draft), creates the feature branch from the default branch, and works test-first inside the plan's Decision. Never changes plans/."
+description: "USE WHEN a person wants an agent to implement a Draft plan or a class S small item. Triggers: 'implement', 'start coding', 'do it', '实现', '开发', '开干', '动手'. Checks that the plan has a finished design (status Draft), creates the feature branch from the default branch, and works test-first inside the plan's Decision. Never changes doc/plans/."
 ---
 
 # gsw-implement
@@ -11,7 +11,7 @@ description: "USE WHEN a person wants an agent to implement a Draft plan or a cl
 
 1. 找到工作：这个人给的 slug，或列出 `status: Draft` 的计划让他选；
    class S 小项：一个跟踪项 ID + 一句话目标，无计划文件。
-2. 读计划（`plans/records/<file>`，本地落后先 pull）。状态必须是 `Draft`；
+2. 读计划（`doc/plans/records/<file>`，本地落后先 pull）。状态必须是 `Draft`；
    还是 `Idea`（设计没写完）就停下："先用 gsw-plan 把 Decision、验收检查和步骤写好"。
    class S 跳过这一步。
 3. 从最新的默认分支切工作分支：
@@ -29,5 +29,5 @@ description: "USE WHEN a person wants an agent to implement a Draft plan or a cl
 ## 不要
 
 - 不做 Decision 之外的工作；不改计划未点名的契约、阈值、外部行为。
-- 功能分支不改 `plans/` 下任何文件。
+- 功能分支不改 `doc/plans/` 下任何文件。
 - 不合并、不打 tag、不推默认分支。

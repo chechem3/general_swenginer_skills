@@ -22,9 +22,9 @@ MR/PR 标记 `Done`。不做的想法留在 `Idea` 即可，没有单独的关�
 
 ## 计划文件（plan file）
 
-- 位置：`plans/records/YYYYMMDD_<slug>.md`（`slug`：小写字母、数字、`_`）。
-- 索引：`plans/INDEX.md` 列出计划（slug、标题、状态、下一步），每次状态变更时更新。
-- 计划变更单独提交（提交只含 `plans/`）；功能分支不得增改 `plans/`。
+- 位置：`doc/plans/records/YYYYMMDD_<slug>.md`（`slug`：小写字母、数字、`_`）。
+- 索引：`doc/plans/INDEX.md` 列出计划（slug、标题、状态、下一步），每次状态变更时更新。
+- 计划变更单独提交（提交只含 `doc/plans/`）；功能分支不得增改 `doc/plans/`。
 
 front matter 字段与章节（模板见 gsw-plan）：
 
@@ -49,5 +49,5 @@ front matter 字段与章节（模板见 gsw-plan）：
 - 分支命名：`feature|bugfix|refactor/<tracker>-<slug>`，从默认分支切出。
 - 提交 trailers：`Plan: <slug>` 与 `Item: <tracker>`，用于追溯与发布说明。
 - MR 工具：`glab`（GitLab）/`gh`（GitHub），任选。
-- 存放方式：默认计划放仓库内 `plans/` 目录、随默认分支版本化；若要和代码完全隔离，
+- 存放方式：默认计划放仓库内 `doc/plans/` 目录、随默认分支版本化；若要和代码完全隔离，
   可改为独立分支 + worktree 挂载的方案，技能步骤不变，只换读写路径。

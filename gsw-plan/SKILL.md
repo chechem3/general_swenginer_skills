@@ -1,6 +1,6 @@
 ---
 name: gsw-plan
-description: "USE WHEN a person wants to record a new idea, feature thought, or problem, or turn it into a small design ready to implement. Triggers: 'capture this idea', 'new idea', 'write the plan', 'design this', 'note this idea', '记录想法', '新想法', '写计划', '做设计', '记一下这个想法'. Creates plans/records/YYYYMMDD_<slug>.md, fills Why and options first (status Idea), then Decision, Acceptance checks, and Steps (status Draft). Does not code."
+description: "USE WHEN a person wants to record a new idea, feature thought, or problem, or turn it into a small design ready to implement. Triggers: 'capture this idea', 'new idea', 'write the plan', 'design this', 'note this idea', '记录想法', '新想法', '写计划', '做设计', '记一下这个想法'. Creates doc/plans/records/YYYYMMDD_<slug>.md, fills Why and options first (status Idea), then Decision, Acceptance checks, and Steps (status Draft). Does not code."
 ---
 
 # gsw-plan
@@ -16,7 +16,7 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
    任何语言都可以。
 2. 提议一个简短 slug（小写字母、数字、`_`）、标题和计划语言（默认取这个人的消息语言；
    不确定用 `en`）。只在它们不明确时用一个问题确认。
-3. 创建 `plans/records/YYYYMMDD_<slug>.md`（目录不存在就先建），内容为模板：
+3. 创建 `doc/plans/records/YYYYMMDD_<slug>.md`（目录不存在就先建），内容为模板：
 
    ````markdown
    ---
@@ -46,8 +46,8 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 
 4. 只填：`## Why`（问题与触发来源，用这个人的原话，中文原样保留，附链接）和
    `## Ideas and options`（这个人点名的选项，一行一个）。不要发明设计。
-5. **记录到此为止时**：更新 `plans/INDEX.md`（slug、标题、状态、下一步），提交并推送
-   （提交只含 `plans/`，信息形如 `plan(<slug>): idea`），回复文件路径和
+5. **记录到此为止时**：更新 `doc/plans/INDEX.md`（slug、标题、状态、下一步），提交并推送
+   （提交只含 `doc/plans/`，信息形如 `plan(<slug>): idea`），回复文件路径和
    "继续用 gsw-plan 成稿"。然后停。
 6. **成稿**：先定级——
    - **S**：单模块内的缺陷修复或重构，不改契约、阈值、外部行为。告知：无需计划，
@@ -58,7 +58,7 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 8. 写 `## Decision`、`## Acceptance checks`（表：ID、检查、期望结果）和简短的
    `## Steps`，用计划的 `language`。保留 `## Why` 里这个人的原文。front matter 填
    `class`、`packages`、`requirements`、`tracker`，`status` 置 `Draft`。
-9. 更新 `plans/INDEX.md`，提交并推送（提交只含 `plans/`，信息形如
+9. 更新 `doc/plans/INDEX.md`，提交并推送（提交只含 `doc/plans/`，信息形如
    `plan(<slug>): draft`）。
 10. 回复：class、文件路径，下一步（用 gsw-implement 实现）。
 
@@ -67,4 +67,4 @@ description: "USE WHEN a person wants to record a new idea, feature thought, or 
 - 不写代码；这个人只说"记一下"时不强行成稿。
 - 不发明这个人没认可的设计或跑不了的验收检查。
 - 一个计划只讲一个主题；新主题开新计划。
-- 计划文件不在功能分支上写；提交只含 `plans/`。
+- 计划文件不在功能分支上写；提交只含 `doc/plans/`。

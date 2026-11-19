@@ -1,6 +1,6 @@
 ---
 name: gsw-status
-description: "USE WHEN a person asks for the state of plans, features, a module, a release, or a requirement. Triggers: 'status', 'what next', 'where are we', 'release notes', 'trace', '状态', '进度', '下一步', '发布说明', '追溯'. Read-only: answers from plans/ and git; with no input, shows open plans with the next step for each. Never changes a file."
+description: "USE WHEN a person asks for the state of plans, features, a module, a release, or a requirement. Triggers: 'status', 'what next', 'where are we', 'release notes', 'trace', '状态', '进度', '下一步', '发布说明', '追溯'. Read-only: answers from doc/plans/ and git; with no input, shows open plans with the next step for each. Never changes a file."
 ---
 
 # gsw-status
@@ -11,8 +11,8 @@ description: "USE WHEN a person asks for the state of plans, features, a module,
 
 | 输入 | 回答 |
 |---|---|
-| 无输入 | 1. 未完成的计划（`status: Idea` 或 `Draft`），各附下一步：Idea → gsw-plan 成稿；Draft → gsw-implement；有分支无 MR → gsw-ship。2. 本地 `plans/` 落后远端（`git rev-list --count HEAD..origin/<default> -- plans/` 大于 0）就提示先 pull。 |
-| 模块名 | `plans/records/` 里 `packages` 含该模块的计划，按状态分组；陈旧计划：`Draft` 30 天未更新、30 天无带其 `Plan:` trailer 的提交 |
+| 无输入 | 1. 未完成的计划（`status: Idea` 或 `Draft`），各附下一步：Idea → gsw-plan 成稿；Draft → gsw-implement；有分支无 MR → gsw-ship。2. 本地 `doc/plans/` 落后远端（`git rev-list --count HEAD..origin/<default> -- doc/plans/` 大于 0）就提示先 pull。 |
+| 模块名 | `doc/plans/records/` 里 `packages` 含该模块的计划，按状态分组；陈旧计划：`Draft` 30 天未更新、30 天无带其 `Plan:` trailer 的提交 |
 | 计划 slug | 摘要、状态、MR/PR（front matter `mr`）、提交（`git log --all --grep "Plan: <slug>"`）、`## Result` 内容 |
 | tag 范围 `vX..vY` | 发布说明草稿：`git log vX..vY` 里状态 `Done` 的计划与带 `Plan:` trailer 的提交，按模块分组 |
 | 需求 ID | `requirements` 含该 ID 的计划，及这些计划的提交 |
@@ -28,6 +28,6 @@ description: "USE WHEN a person asks for the state of plans, features, a module,
 - 用对话的语言回复；引用计划原文时用其 `language`。
 - 优先用 front matter（title/summary/status/class/mr）摘要作答；只有 slug 问题才打开
   完整计划。
-- 不做的想法不算"关闭"：留在 `Idea` 即可；要清掉就从 `plans/INDEX.md` 删该行
+- 不做的想法不算"关闭"：留在 `Idea` 即可；要清掉就从 `doc/plans/INDEX.md` 删该行
   （那是写操作，不属于本技能，提示这个人自己删或用编辑会话做）。
 - 永不改文件。回答前后 `git status` 必须不变。
