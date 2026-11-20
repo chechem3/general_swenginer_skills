@@ -12,9 +12,10 @@ plans 里）；实现必须等 gsw-implement 在 `Locked` 计划上进行。
 
 ## 步骤
 
-1. 读计划（`doc/plans/records/<file>`，本地落后先 pull）。状态必须是 `Draft`；
-   `Idea`（没成稿）就停下："先用 gsw-plan 把 Decision、验收检查和步骤写好"；
-   已是 `Locked` 就告知无需重复审批。
+1. 读计划（`doc/plans/records/<file>`，本地落后先 pull）。`type: research` 的计划
+   不需要锁定（研究不设闸门），停下："研究直接用 gsw-research 执行"。
+   状态必须是 `Draft`；`Idea`（没成稿）就停下："先用 gsw-plan 把 Decision、
+   验收检查和步骤写好"；已是 `Locked` 就告知无需重复审批。
 2. 核对方案完整性，缺一样就停下并用 gsw-plan 补：
    - `## Decision` 有选定方案与理由（含关键参数：契约/接口/阈值）；
    - `## Acceptance checks` 是可运行的命令或可判定的判据，含一个预期 `FAIL` 用例；

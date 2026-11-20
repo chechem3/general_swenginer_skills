@@ -29,6 +29,7 @@ plans 里；实现必须等 gsw-implement 在 `Locked` 计划上做。这个人�
    summary: <一行摘要>
    status: Idea          # Idea / Draft / Locked / Done
    class:                # S / M / L（成稿时填）
+   type:                 # research（研究类，走 gsw-research）或留空（实现类）
    language: <en|zh>
    packages: []
    requirements: []
@@ -51,10 +52,13 @@ plans 里；实现必须等 gsw-implement 在 `Locked` 计划上做。这个人�
 
 4. 只填：`## Why`（问题与触发来源，用这个人的原话，中文原样保留，附链接）和
    `## Ideas and options`（这个人点名的选项，一行一个）。不要发明设计。
+   主题明显是研究类（梳理/调研/对比，产出是认识不是代码）就在 front matter
+   置 `type: research`。
 5. **记录到此为止时**：更新 `doc/plans/INDEX.md`（slug、标题、状态、下一步），提交并推送
    （提交只含 `doc/plans/`，信息形如 `plan(<slug>): idea`），回复文件路径和
-   "继续用 gsw-plan 成稿"。然后停。
-6. **成稿**：先定级——
+   下一步（实现类"继续用 gsw-plan 成稿"；研究类"用 gsw-research 执行"）。然后停。
+6. **成稿**：`type: research` 的计划到此为止，回复"用 gsw-research 执行"。
+   实现类先定级——
    - **S**：单模块内的缺陷修复或重构，不改契约、阈值、外部行为。告知：无需计划，
      直接用 gsw-implement 做一个小工作项（tracker + 一句话目标）。到此为止。
    - **M**：单模块新功能。**L**：跨模块、契约/接口、阈值、外部行为变更。
@@ -77,6 +81,8 @@ plans 里；实现必须等 gsw-implement 在 `Locked` 计划上做。这个人�
 ## 不要
 
 - 不写代码；这个人只说"记一下"时不强行成稿。
+- 不给研究类（`type: research`）计划写 Decision、验收检查或 Steps；研究走
+  gsw-research。
 - 不发明这个人没认可的设计或跑不了的验收检查。
 - 一个计划只讲一个主题；新主题开新计划。
 - 计划文件不在功能分支上写；提交只含 `doc/plans/`。

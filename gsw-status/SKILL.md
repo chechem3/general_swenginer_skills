@@ -11,7 +11,7 @@ description: "USE WHEN a person asks for the state of plans, features, a module,
 
 | 输入 | 回答 |
 |---|---|
-| 无输入 | 1. 未完成的计划（`status: Idea`/`Draft`/`Locked`），各附下一步：Idea → gsw-plan 成稿；Draft → gsw-approve 评审锁定；Locked → gsw-implement 实现；有分支无 MR → gsw-ship。2. 本地 `doc/plans/` 落后远端（`git rev-list --count HEAD..origin/<default> -- doc/plans/` 大于 0）就提示先 pull。 |
+| 无输入 | 1. 未完成的计划（`status: Idea`/`Draft`/`Locked`），各附下一步：Idea → gsw-plan 成稿（`type: research` 则 gsw-research 执行）；Draft → gsw-approve 评审锁定；Locked → gsw-implement 实现；有分支无 MR → gsw-ship。2. 本地 `doc/plans/` 落后远端（`git rev-list --count HEAD..origin/<default> -- doc/plans/` 大于 0）就提示先 pull。 |
 | 模块名 | `doc/plans/records/` 里 `packages` 含该模块的计划，按状态分组；陈旧计划：`Draft`/`Locked` 30 天未更新、30 天无带其 `Plan:` trailer 的提交 |
 | 计划 slug | 摘要、状态、MR/PR（front matter `mr`）、提交（`git log --all --grep "Plan: <slug>"`）、`## Result` 内容 |
 | tag 范围 `vX..vY` | 发布说明草稿：`git log vX..vY` 里状态 `Done` 的计划与带 `Plan:` trailer 的提交，按模块分组 |
