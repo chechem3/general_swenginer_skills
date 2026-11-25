@@ -20,8 +20,8 @@ gsw-plan 的 Why/Options/Decision，也可作为计划附件被引用。要落�
    标题，创建 `doc/plans/records/YYYYMMDD_<slug>.md`，模板同 gsw-plan，front
    matter 置 `type: research`、`status: Idea`，只填 `## Why`（这个人的原话与
    触发来源，附链接），其余章节留空。更新 `doc/plans/INDEX.md`（下一步 =
-   用 gsw-research 执行），单独提交并推送（提交只含 `doc/plans/`，信息形如
-   `plan(<slug>): idea`）。
+   用 gsw-research 执行），单独提交并推送（就在当前分支提交，不开分支；
+   提交只含 `doc/plans/`，信息形如 `plan(<slug>): idea`）。
 3. 只读调查：读代码、配置、文档，外部知识用网络检索，边查边记证据。
    可以跑只读命令验证（读文件、列目录、跑分析看输出）；需要临时脚本做数据
    分析就放系统临时目录，不进仓库，要保留的数据/工具第 4 步作为附件放进
@@ -36,12 +36,15 @@ gsw-plan 的 Why/Options/Decision，也可作为计划附件被引用。要落�
 5. 收尾：计划 `status` 置 `Done`，`## Result` 写一两行（产出路径、日期）；
    更新 `doc/plans/INDEX.md`（状态 Done，下一步 = 要落地就用 gsw-plan）。
    单独提交并推送（提交只含 `doc/plans/` + `doc/research/`，信息形如
-   `research(<slug>): done`，trailers `Plan: <slug>`）。
+   `research(<slug>): done`，trailers `Plan: <slug>`；推的是当前分支，
+   完成即推，仓库没配远端就说明一声，提交先留在本地）。
 6. 回复：产出路径、关键结论两三句、开放问题；如果结论指向一个可做的功能，
    提示"要用 gsw-plan 开实现计划"。
 
 ## 不要
 
+- 不开分支：研究全程就在当前分支上进行，不建 `research/<slug>` 之类的分支，
+  也不切分支；提交与推送都落在当前分支。
 - 不改代码、不改产品文件；`doc/research/` 与 `doc/plans/` 之外一个文件都
   不动，代码镜像只增不改。
 - 不做设计决策、不定契约/阈值/方案——研究只陈述事实、选项与证据；
